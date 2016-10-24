@@ -1,0 +1,130 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style type="text/css">
+
+		/* #ffc179 #ff966e #db746f #6c2f8d #211b7c */
+			
+			body {
+				font-family: Helvetica, sans-serif;
+			}
+			* {
+				box-sizing: border-box;
+			}
+
+			.GameContainer {
+				width: 300px;
+				margin: 0 auto;
+			}
+
+			.row {
+				display: flex;
+				height: 30px;
+
+			}
+			.cell {
+				flex-grow: 1;
+				border: 1px solid grey;
+				padding: 3px;
+			}
+
+			.cell-content {
+				min-width: 18px;
+				text-align: center;
+				color: white;
+				display: inline-block;
+			}
+
+			.open-0 {
+				background-color: #663399;
+			}
+			.open-1 {
+				background-color: #7547a3;
+			}
+			.open-2 {
+				background-color: #845bad;
+			}
+			.open-3 {
+				background-color: #9370b7;
+			}
+			.open-4 {
+				background-color: #a384c1;	
+			}
+			.open-5 {
+				background-color: #b299cc;
+			}
+			.open-6 {
+				background-color: #c1add6;
+			}
+			.open-7 {
+				background-color: #d1c1e0;	
+			}
+			.open-8 {
+				background-color: #e0d6ea;
+			}
+
+			.m {
+				/*background-color: green;	*/
+			}
+
+			.overlay {
+				height: 100%;
+				width: 100%;
+				background-color: rgba(0,0,0,.2);
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			.modal {
+				height: 200px;
+				width: 200px;
+				background-color: white;
+				position: absolute;
+				color: #333;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+			.modal .message {
+				height: 50%;
+				padding: 20px;
+				text-align: center;
+				font-size: 32px;
+				text-transform: uppercase;
+			}
+			.button {
+				color: white;
+			    border: none;
+			    background-color: rebeccapurple;
+			    font-size: 24px;
+			    text-transform: uppercase;
+			    padding: 10px;
+			    display: inline-block;
+			}
+
+			.modal .button {
+			    margin: 20px auto;
+			    display: block;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<main id="minefield" class="GameContainer"></main>
+		<div class="js-modal"></div>
+
+		<script src="js/utilities.js"></script>
+		<script src="js/events.js"></script>
+		<script src="js/cell.js"></script>
+		<script src="js/grid.js"></script>
+		<script src="js/ModalManager.js"></script>
+		<script src="js/GameManager.js"></script>
+		<script src="js/application.js"></script>
+	</body>
+</html>
