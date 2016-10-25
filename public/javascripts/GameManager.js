@@ -1,7 +1,10 @@
 function GameManager() {
 	this.streak = 0;
+	this.longestStreak = 0;
 
 	this.start();
+	this.getStats();
+	this.displayStreak();
 }
 
 GameManager.prototype.listen = function () {
@@ -9,9 +12,18 @@ GameManager.prototype.listen = function () {
 	// on win, incrementStreak and start
 	// on loss, reset();
 
-	events.on('win', this.announceWin, this);
+	events.on('win', this.handleWin, this);
 	events.on('lose', this.announceLose, this);
 	events.on('restart', this.start, this);
+};
+
+GameManager.prototype.getStats = function () {
+	var stats = localStorage.getItem('stats');
+	stats = JSON.parse(stats);
+
+	if (stats && stats.longestStreak) {
+		this.longestStreak = stats.longestStreak;
+	}
 };
 
 GameManager.prototype.start = function () {
@@ -31,6 +43,9 @@ GameManager.prototype.reset = function () {
 
 GameManager.prototype.incrementStreak = function () {
 	this.streak++;
+	if (this.streak > this.longestStreak) {
+		localStorage.setItem('stats', JSON.stringify({longestStreak: this.streak }));
+	}
 };
 
 GameManager.prototype.announceWin = function () {
@@ -48,6 +63,25 @@ GameManager.prototype.announceLose = function () {
 		buttonLabel: 'Try Again?'
 	});
 
+};
+
+GameManager.prototype.handleWin = function () {
+	this.incrementStreak();
+	this.announceWin();
+	this.displayStreak();
+};
+
+GameManager.prototype.handleLose = function () {
+	this.clearStreak();
+	this.announceLose();
+	this.displayStreak();
+};
+
+GameManager.prototype.displayStreak = function () {
+	var statboard = document.getElementsByClassName('js-stats')[0];
+
+	statboard.innerHTML = '<p>Current streak: ' +this.streak + '</p>' +
+							'<p>Longest streak: ' + this.longestStreak + '</p>';
 };
 
 
