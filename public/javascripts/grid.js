@@ -1,6 +1,6 @@
 function Grid(width, height) {
-	this.width = width || 10;
-	this.height = height || 10;
+	this.width = width || 8;
+	this.height = height || 8;
 	this.cells = {};
 	this.mines = [];
 	this.cleared = 0;
