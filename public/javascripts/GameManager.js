@@ -79,15 +79,15 @@ GameManager.prototype.handleLose = function () {
 };
 
 GameManager.prototype.displayCurrentStreak = function () {
-	var statboard = document.getElementsByClassName('js-stats')[0];
+	var stat = document.getElementsByClassName('js-streak')[0];
 
-	statboard.innerHTML = '<p>Current: ' +this.streak + '</p>';
+	stat.innerHTML = this.streak;
 };
 
 GameManager.prototype.displayStoredStats = function () {
-	var statboard = document.getElementsByClassName('js-stats-best')[0];
+	var stat = document.getElementsByClassName('js-best')[0];
 
-	statboard.innerHTML = '<p>Longest: ' +this.longestStreak + '</p>';
+	stat.innerHTML = this.longestStreak;
 };
 
 

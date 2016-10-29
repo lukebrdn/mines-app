@@ -50,7 +50,7 @@ Cell.prototype.mapNeighbors = function () {
 		bottomLeft = '';
 	}
 
-	if (this.x === 9) {
+	if (this.x === 7) {
 		topRight = '';
 		midRight = '';
 		bottomRight = '';
@@ -62,7 +62,7 @@ Cell.prototype.mapNeighbors = function () {
 		bottomRight = '';
 	}
 
-	if (this.y === 9) {
+	if (this.y === 7) {
 		topLeft = '';
 		topMid = '';
 		topRight = '';
