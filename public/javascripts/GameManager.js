@@ -3,27 +3,28 @@ function GameManager() {
 	this.longestStreak = 0;
 
 	this.start();
-	this.getStats();
-	this.displayStreak();
+	this.displayCurrentStreak();
+
+	if (storage) {
+		this.getStats();
+		this.displayStoredStats();
+	}
 }
 
 GameManager.prototype.listen = function () {
-	// listen for wins/loses
-	// on win, incrementStreak and start
-	// on loss, reset();
-
 	events.on('win', this.handleWin, this);
 	events.on('lose', this.announceLose, this);
 	events.on('restart', this.start, this);
 };
 
 GameManager.prototype.getStats = function () {
-	var stats = localStorage.getItem('stats');
+	var stats = storage.getItem('stats');
 	stats = JSON.parse(stats);
 
 	if (stats && stats.longestStreak) {
 		this.longestStreak = stats.longestStreak;
 	}
+
 };
 
 GameManager.prototype.start = function () {
@@ -43,8 +44,8 @@ GameManager.prototype.reset = function () {
 
 GameManager.prototype.incrementStreak = function () {
 	this.streak++;
-	if (this.streak > this.longestStreak) {
-		localStorage.setItem('stats', JSON.stringify({longestStreak: this.streak }));
+	if (this.streak > this.longestStreak && storage) {
+		storage.setItem('stats', JSON.stringify({longestStreak: this.streak }));	
 	}
 };
 
@@ -68,20 +69,25 @@ GameManager.prototype.announceLose = function () {
 GameManager.prototype.handleWin = function () {
 	this.incrementStreak();
 	this.announceWin();
-	this.displayStreak();
+	this.displayCurrentStreak();
 };
 
 GameManager.prototype.handleLose = function () {
 	this.clearStreak();
 	this.announceLose();
-	this.displayStreak();
+	this.displayCurrentStreak();
 };
 
-GameManager.prototype.displayStreak = function () {
+GameManager.prototype.displayCurrentStreak = function () {
 	var statboard = document.getElementsByClassName('js-stats')[0];
 
-	statboard.innerHTML = '<p>Current streak: ' +this.streak + '</p>' +
-							'<p>Longest streak: ' + this.longestStreak + '</p>';
+	statboard.innerHTML = '<p>Current: ' +this.streak + '</p>';
+};
+
+GameManager.prototype.displayStoredStats = function () {
+	var statboard = document.getElementsByClassName('js-stats-best')[0];
+
+	statboard.innerHTML = '<p>Longest: ' +this.longestStreak + '</p>';
 };
 
 
