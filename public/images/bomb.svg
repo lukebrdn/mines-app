@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="146px" height="160px" viewBox="0 0 146 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <title>bomb</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-1" fill="#C1ADD6" cx="50" cy="110" r="50"></circle>
+        <rect id="Rectangle-1" fill="#C1ADD6" transform="translate(82.937171, 59.878950) rotate(-327.000000) translate(-82.937171, -59.878950) " x="67.9371708" y="51.8789501" width="30" height="16" rx="8"></rect>
+        <path d="M154.655053,30.7394928 C129.971331,75.3434429 112.141979,32.52925 112.141979,32.52925 C112.141979,32.52925 108.265828,13.6618091 94.9402385,13.6618091 C81.6146488,13.6618091 75.9332323,31.2044297 75.9332323,31.2044297" id="Path-1" stroke="#C1ADD6" stroke-width="3" transform="translate(115.294142, 32.350086) rotate(-51.000000) translate(-115.294142, -32.350086) "></path>
+    </g>
+</svg>
