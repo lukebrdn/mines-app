@@ -53,7 +53,8 @@ GameManager.prototype.announceWin = function () {
 	var modal = new ModalManager();
 	modal.show({
 		message: 'You win!',
-		buttonLabel: 'Play Again?'
+		buttonLabel: "Keep Playin'",
+		state: 'win'
 	});
 };
 
@@ -61,7 +62,8 @@ GameManager.prototype.announceLose = function () {
 	var modal = new ModalManager();
 	modal.show({
 		message: 'You lose',
-		buttonLabel: 'Try Again?'
+		buttonLabel: 'Try Again',
+		state: 'lose'
 	});
 
 };

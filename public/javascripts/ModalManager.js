@@ -32,7 +32,7 @@ ModalManager.prototype.template = function (data) {
 
 	var html = '<div class="overlay"></div>' +
 				'<div class="modal">' +
-					'<div class="message">' +
+					'<div class="message ' + data.state + '">' +
 						data.message +
 					'</div>' +
 					'<button class="button js-restart">' + data.buttonLabel + '</button>' +
