@@ -52,7 +52,7 @@ GameManager.prototype.incrementStreak = function () {
 GameManager.prototype.announceWin = function () {
 	var modal = new ModalManager();
 	modal.show({
-		message: 'You win!',
+		message: 'You won',
 		buttonLabel: "Keep Playin'",
 		state: 'win'
 	});
@@ -61,7 +61,7 @@ GameManager.prototype.announceWin = function () {
 GameManager.prototype.announceLose = function () {
 	var modal = new ModalManager();
 	modal.show({
-		message: 'You lose',
+		message: 'You lost',
 		buttonLabel: 'Try Again',
 		state: 'lose'
 	});
