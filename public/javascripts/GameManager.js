@@ -75,7 +75,8 @@ GameManager.prototype.handleWin = function () {
 
 	ga('send', 'event', {
   		'eventCategory': 'gameplay',
-  		'eventAction': 'win'
+  		'eventAction': 'end',
+  		'eventLabel': 'win'
 	});
 };
 
@@ -86,7 +87,8 @@ GameManager.prototype.handleLose = function () {
 	
 	ga('send', 'event', {
   		'eventCategory': 'gameplay',
-  		'eventAction': 'lose'
+  		'eventAction': 'end',
+  		'eventLabel': 'lose'
 	});
 
 };
