@@ -13,7 +13,7 @@ function GameManager() {
 
 GameManager.prototype.listen = function () {
 	events.on('win', this.handleWin, this);
-	events.on('lose', this.announceLose, this);
+	events.on('lose', this.handleLose, this);
 	events.on('restart', this.start, this);
 };
 
@@ -72,12 +72,23 @@ GameManager.prototype.handleWin = function () {
 	this.incrementStreak();
 	this.announceWin();
 	this.displayCurrentStreak();
+
+	ga('send', 'event', {
+  		'eventCategory': 'gameplay',
+  		'eventAction': 'win'
+	});
 };
 
 GameManager.prototype.handleLose = function () {
 	this.clearStreak();
 	this.announceLose();
 	this.displayCurrentStreak();
+	
+	ga('send', 'event', {
+  		'eventCategory': 'gameplay',
+  		'eventAction': 'lose'
+	});
+
 };
 
 GameManager.prototype.displayCurrentStreak = function () {
