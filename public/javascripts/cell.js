@@ -126,6 +126,7 @@ Cell.prototype.displayThreat = function () {
 	} else {
 		this.ui.content.innerHTML = this.threatLevel;
 		this.ui.cell.classList.add('open-' + this.threatLevel);
+		this.ui.cell.classList.add('open');
 	}
 	this.isOpen = true;
 };
