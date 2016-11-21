@@ -15,6 +15,12 @@ GameManager.prototype.listen = function () {
 	events.on('win', this.handleWin, this);
 	events.on('lose', this.handleLose, this);
 	events.on('restart', this.start, this);
+
+	var modeButtons = document.getElementsByClassName('js-mode-button');
+	for (var i = 0; i < modeButtons.length; i++) {
+		setClickListener(modeButtons[i], this.setMode, this);
+	}
+	
 };
 
 GameManager.prototype.getStats = function () {
@@ -105,5 +111,13 @@ GameManager.prototype.displayStoredStats = function () {
 	stat.innerHTML = this.longestStreak;
 };
 
+GameManager.prototype.setMode = function (e) {
+	var mode = e.currentTarget.getAttribute('data-mode');
+	if (mode !== settings.getMode()) {
+		settings.setMode(mode);
+		document.getElementsByClassName('selected')[0].classList.remove('selected');
+		e.currentTarget.classList.add('selected');
+	}
+}
 
 

@@ -1,4 +1,6 @@
 function Cell(position) {
+	this.isFlag = false;
+
 	if (!position) {
 		console.error('cell must have a position');
 		return;
@@ -88,22 +90,34 @@ Cell.prototype.buildUIElement = function () {
  };
 
 Cell.prototype.onClick = function (e) {
-	// Stop click handler if cell is open
-	if (this.isOpen) return;
-	
-	if (this.isMine) {
-		events.trigger('lose');
+
+
+	// check if flag mode is set
+	if (settings.getMode() === 'flag') {
+		// plant flag
+		this.toggleFlag();
+		return;
 	} else {
-		this.isOpen = true;
-		events.trigger('cell:clear');
+		// Stop click handler if cell is open
+		if (this.isOpen || this.isFlag) return;
+			// if no flag
 	
-		if (!this.threatLevel) {
-			this.messageNeighbors('no:threat');
+		if (this.isMine) {
+			events.trigger('lose');
+		} else {
+			this.isOpen = true;
+			events.trigger('cell:clear');
+		
+			if (!this.threatLevel) {
+				this.messageNeighbors('no:threat');
+			}
+
+			this.displayThreat();
+
 		}
 
-		this.displayThreat();
-
 	}
+	
 };
 
 Cell.prototype.getElement = function () {
@@ -165,6 +179,13 @@ Cell.prototype.setMine = function () {
 	if (this.isMine) {
 		events.trigger('mine:set', {x: this.x, y: this.y});
 	}
+};
+
+Cell.prototype.toggleFlag = function () {
+	this.isFlag = !this.isFlag;
+
+	this.ui.cell.classList.toggle('flag');
+
 };
 
 Cell.prototype.setNeighbors = function () {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="56px" height="90px" viewBox="0 0 56 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="20.2116918 18.5 39.4616918 57 0.961691796 57"></polygon>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-3" y="-3" width="44.5" height="44.5">
+            <rect x="-2.0383082" y="15.5" width="44.5" height="44.5" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(6.000000, 0.000000)">
+            <g id="Triangle-1" transform="translate(20.211692, 37.750000) rotate(-90.000000) translate(-20.211692, -37.750000) ">
+                <use fill="#C1ADD6" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use stroke="#B299CC" mask="url(#mask-2)" stroke-width="6" xlink:href="#path-1"></use>
+            </g>
+            <path d="M43,7 L43,86" id="Line" stroke="#A384C1" stroke-width="8" stroke-linecap="square"></path>
+            <circle id="Oval-1" fill="#A384C1" cx="43" cy="7" r="7"></circle>
+        </g>
+    </g>
+</svg>
