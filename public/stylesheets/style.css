@@ -75,7 +75,7 @@ body {
 }
 
 .minefield {
-	margin-bottom: 50px;
+	/*margin-bottom: 50px;*/
 }
 
 .row {
@@ -158,6 +158,55 @@ body {
 
 .m {
 	/*background-color: green;	*/
+}
+
+.mode-buttons {
+	margin: 20px 0;
+	text-align: right;
+}
+.mode-button {
+	border: 1px solid #d1c1e0;
+	background-color: #eee;
+	box-shadow: none;
+	color: #a384c1;
+	height: 30px;
+    width: 40px;
+
+	background-position: center;
+    background-repeat: no-repeat;
+    text-indent: -100;
+    overflow: hidden;
+}
+.mode-button:focus {
+	outline: 0;
+}
+
+.mode-button.selected {
+	box-shadow: inset 1px 1px 13px -4px #000
+}
+
+.mode-button:first-child {
+	border-top-left-radius: 6px; 
+	border-bottom-left-radius: 6px;
+	background-image: url('../images/target.svg');
+    background-size: 58%;
+
+}
+
+.mode-button:last-child {
+	margin-left: -5px;
+	border-top-right-radius: 6px; 
+	border-bottom-right-radius: 6px;
+	background-image: url('../images/flag.svg');
+    background-size: 33%;
+    background-position-x: 11px;
+}
+
+.flag {
+	background-image: url('../images/flag.svg');
+	background-repeat: no-repeat;
+    background-size: 45%;
+    background-position: center;
 }
 
 .game-instruction {

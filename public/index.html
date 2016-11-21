@@ -38,6 +38,10 @@
 			</header>
 			
 			<div id="minefield" class="minefield"></div>
+			<div class="mode-buttons">
+				<button class="mode-button selected js-mode-button" data-mode="default">off</button>
+				<button class="mode-button js-mode-button" data-mode="flag">on</button>
+			</div>
 
 			<div class="game-instruction">
 				<h2>Goal</h2>
@@ -58,6 +62,7 @@
 
 		<script src="javascripts/utilities.js"></script>
 		<script src="javascripts/events.js"></script>
+		<script src="javascripts/Settings.js"></script>
 		<script src="javascripts/cell.js"></script>
 		<script src="javascripts/grid.js"></script>
 		<script src="javascripts/ModalManager.js"></script>
