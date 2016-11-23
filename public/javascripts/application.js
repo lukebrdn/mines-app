@@ -11,8 +11,9 @@ try {
 } catch (exception) {}
 
 
-
+var settings;
 function start() {
+	settings = new Settings();
 	new GameManager();
 }
 

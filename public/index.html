@@ -21,9 +21,9 @@
 	</head>
 	<body>
 
-		<div class="game-container">
-			<header class="game-header cf">
-				<h1>mines</h1>
+		<main class="game-container">
+			<header class="game-header">
+				<h1>too many mines</h1>
 				<div class="stats-container js-stats">
 					<div class="stat-box">
 						<span class="stat-heading">Streak</span>
@@ -34,17 +34,35 @@
 						<span class="stat-score js-best"></span>
 					</div>
 				</div>
+				<p>a minesweeping game</p>
 			</header>
 			
-			<div class="js-stats-best"></div>
-			<main id="minefield"></main>
+			<div id="minefield" class="minefield"></div>
+			<div class="mode-buttons">
+				<button class="mode-button selected js-mode-button" data-mode="default">off</button>
+				<button class="mode-button js-mode-button" data-mode="flag">on</button>
+			</div>
+
+			<div class="game-instruction">
+				<h2>Goal</h2>
+				<p>Find all the mines without clicking on one.</p>
+			</div>
+
+			<div class="game-instruction">
+				<h2>How to play</h2>
+				<p>Click tiles to open. If you click a mine, you lose. Numbers represent the amount of mines touching that tile.</p>
+			</div>
+
 			<div class="js-modal"></div>
 
-		</div>
+		</main>
+
+
 		
 
 		<script src="javascripts/utilities.js"></script>
 		<script src="javascripts/events.js"></script>
+		<script src="javascripts/Settings.js"></script>
 		<script src="javascripts/cell.js"></script>
 		<script src="javascripts/grid.js"></script>
 		<script src="javascripts/ModalManager.js"></script>
