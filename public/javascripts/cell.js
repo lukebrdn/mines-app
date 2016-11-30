@@ -1,5 +1,6 @@
 function Cell(position) {
 	this.isFlag = false;
+	this.isCtrlPressed = false;
 
 	if (!position) {
 		console.error('cell must have a position');
