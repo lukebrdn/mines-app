@@ -202,6 +202,17 @@ body {
     background-position-x: 11px;
 }
 
+.command-key-symbol {
+	color: #a384c1;
+    position: relative;
+    right: 0;
+    top: -19px;
+    display: inline-block;
+    text-align: right;
+    float: right;
+    font-size: 12px;
+}
+
 .flag {
 	background-image: url('../images/flag.svg');
 	background-repeat: no-repeat;
