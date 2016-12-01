@@ -130,7 +130,7 @@ GameManager.prototype.setMode = function (e) {
 	var mode = e.currentTarget.getAttribute('data-mode');
 	if (mode !== settings.getMode()) {
 		settings.setMode(mode);
-
+		this.toggleModeUI();
 	}
 }
 
