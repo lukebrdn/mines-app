@@ -17,6 +17,10 @@ body {
 	box-sizing: border-box;
 }
 
+.mine {
+	background-color: red;
+}
+
 .game-container {
 	margin: 0 auto;
 	padding: 0 20px;

@@ -29,5 +29,4 @@ function Events() {
 	};
   
 }
-
-var events;
+var events = new Events();

@@ -86,7 +86,6 @@ GameManager.prototype.announceLose = function () {
 		buttonLabel: 'Try Again',
 		state: 'lose'
 	});
-
 };
 
 GameManager.prototype.handleWin = function () {
