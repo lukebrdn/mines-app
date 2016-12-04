@@ -21,6 +21,21 @@ GameManager.prototype.listen = function () {
 		setClickListener(modeButtons[i], this.setMode, this);
 	}
 	
+
+	document.onkeydown = function (e) {
+	
+		if (e.keyCode === 91) {
+			settings.setMode('flag');
+			this.toggleModeUI();
+		}
+	}.bind(this);
+
+	document.onkeyup = function (e) {
+		if (e.keyCode === 91) {
+			settings.setMode('default');
+			this.toggleModeUI();
+		}
+	}.bind(this);
 };
 
 GameManager.prototype.getStats = function () {
@@ -115,9 +130,22 @@ GameManager.prototype.setMode = function (e) {
 	var mode = e.currentTarget.getAttribute('data-mode');
 	if (mode !== settings.getMode()) {
 		settings.setMode(mode);
-		document.getElementsByClassName('selected')[0].classList.remove('selected');
-		e.currentTarget.classList.add('selected');
+		this.toggleModeUI();
 	}
+}
+
+GameManager.prototype.toggleModeUI = function () {
+	var mode = settings.getMode();
+
+	document.getElementsByClassName('selected')[0].classList.remove('selected');
+	var buttons = document.getElementsByClassName('js-mode-button');
+
+	for (var i = 0; i < buttons.length; i++) {
+		if (buttons[i].getAttribute('data-mode') === mode) {
+			buttons[i].classList.add('selected');
+		}
+	}
+
 }
 
 
