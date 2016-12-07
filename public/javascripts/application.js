@@ -1,4 +1,5 @@
-// Feature detect + local reference
+
+// storage feature detect + local reference
 var storage;
 var fail;
 var uid;
@@ -10,11 +11,13 @@ try {
 	fail && (storage = false);
 } catch (exception) {}
 
+// other globals
+var events;
+var controls;
 
-var settings;
-function start() {
-	settings = new Settings();
-	new GameManager();
+// start application
+function initialize () {
+	new GameController();
 }
 
-document.onready = start();
+document.onready = initialize();

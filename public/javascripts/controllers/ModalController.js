@@ -1,34 +1,34 @@
-function ModalManager() {};
+function ModalController () {};
 
 
 
 // show modal
-ModalManager.prototype.show = function (data) {
+ModalController.prototype.show = function (data) {
 	var modal = document.getElementsByClassName('js-modal')[0];
 	modal.innerHTML = this.template(data);
 	this.listen();
 };
 
-ModalManager.prototype.listen = function () {
+ModalController.prototype.listen = function () {
 	var btnElement = document.getElementsByClassName('js-restart')[0];
 
 	setClickListener(btnElement, this.onRestartClick, this);
 };
 
-ModalManager.prototype.onRestartClick = function () {
+ModalController.prototype.onRestartClick = function () {
 	events.trigger('restart');
 	this.hide();
 };
 
 // hide modal
-ModalManager.prototype.hide = function (data) {
+ModalController.prototype.hide = function (data) {
 	var modal = document.getElementsByClassName('js-modal')[0];
 	modal.innerHTML = '';
 };
 
 // modal template
 
-ModalManager.prototype.template = function (data) {
+ModalController.prototype.template = function (data) {
 
 	var html = '<div class="overlay"></div>' +
 				'<div class="modal">' +

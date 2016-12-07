@@ -29,5 +29,3 @@ function Events() {
 	};
   
 }
-
-var events;

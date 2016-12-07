@@ -37,7 +37,7 @@
 				<p>a minesweeping game</p>
 			</header>
 			
-			<div id="minefield" class="minefield"></div>
+			<div class="minefield js-grid-container"></div>
 			<div class="mode-buttons">
 				<button class="mode-button selected js-mode-button" data-mode="default">off</button>
 				<button class="mode-button js-mode-button" data-mode="flag">on</button>
@@ -54,20 +54,36 @@
 				<p>Click tiles to open. If you click a mine, you lose. Numbers represent the amount of mines touching that tile.</p>
 			</div>
 
+			<a href="mailto:toomanymines@gmail.com" class="email-us-link">email me</a>
+
 			<div class="js-modal"></div>
 
 		</main>
 
-
-		
-
+		<!-- utilities -->
 		<script src="javascripts/utilities.js"></script>
+
+		<!-- event system -->
 		<script src="javascripts/events.js"></script>
-		<script src="javascripts/Settings.js"></script>
-		<script src="javascripts/cell.js"></script>
-		<script src="javascripts/grid.js"></script>
-		<script src="javascripts/ModalManager.js"></script>
-		<script src="javascripts/GameManager.js"></script>
+
+		<!-- models -->
+		<script src="javascripts/models/CellModel.js"></script>
+		<script src="javascripts/models/GridModel.js"></script>
+		<script src="javascripts/models/MinesModel.js"></script>
+		<script src="javascripts/models/User.js"></script>
+
+		<!-- views -->
+		<script src="javascripts/views/CellView.js"></script>
+		<script src="javascripts/views/GridView.js"></script>
+
+		<!-- controllers -->
+		<script src="javascripts/controllers/GridController.js"></script>
+		<script src="javascripts/controllers/MinesController.js"></script>
+		<script src="javascripts/controllers/ModalController.js"></script>
+		<script src="javascripts/controllers/ControlsController.js"></script>
+		<script src="javascripts/controllers/GameController.js"></script>
+
+		<!-- application starter -->
 		<script src="javascripts/application.js"></script>
 
 	</body>
