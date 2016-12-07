@@ -37,7 +37,7 @@
 				<p>a minesweeping game</p>
 			</header>
 			
-			<div class="minefield js-grid"></div>
+			<div class="minefield js-grid-container"></div>
 			<div class="mode-buttons">
 				<button class="mode-button selected js-mode-button" data-mode="default">off</button>
 				<button class="mode-button js-mode-button" data-mode="flag">on</button>
@@ -54,6 +54,8 @@
 				<p>Click tiles to open. If you click a mine, you lose. Numbers represent the amount of mines touching that tile.</p>
 			</div>
 
+			<a href="mailto:toomanymines@gmail.com" class="email-us-link">email me</a>
+
 			<div class="js-modal"></div>
 
 		</main>
@@ -68,6 +70,7 @@
 		<script src="javascripts/models/CellModel.js"></script>
 		<script src="javascripts/models/GridModel.js"></script>
 		<script src="javascripts/models/MinesModel.js"></script>
+		<script src="javascripts/models/User.js"></script>
 
 		<!-- views -->
 		<script src="javascripts/views/CellView.js"></script>
@@ -77,6 +80,7 @@
 		<script src="javascripts/controllers/GridController.js"></script>
 		<script src="javascripts/controllers/MinesController.js"></script>
 		<script src="javascripts/controllers/ModalController.js"></script>
+		<script src="javascripts/controllers/ControlsController.js"></script>
 		<script src="javascripts/controllers/GameController.js"></script>
 
 		<!-- application starter -->

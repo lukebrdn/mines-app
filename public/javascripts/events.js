@@ -29,4 +29,3 @@ function Events() {
 	};
   
 }
-var events = new Events();

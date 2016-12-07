@@ -1,12 +1,9 @@
-function MinesController (grid) {
-	this.grid = grid;
-}
+function MinesController () {}
 
-MinesController.prototype.setMines = function (num, clickedCell) {
-		this.total = num;
-		var mines = new MinesModel(num);
+MinesController.prototype.setMines = function (numberOfMines, grid, clickedCell) {
+		var mines = new MinesModel(numberOfMines);
 		var unplacedMines = mines.total;
-		var cells = this.grid.model.cells;
+		var cells = grid.model.cells;
 		var cell;
 
 		while (unplacedMines > 0) {

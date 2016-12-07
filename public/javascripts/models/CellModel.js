@@ -4,4 +4,5 @@ function CellModel (x, y) {
 	this.minesNearby = 0;
 	this.isMine = false;
 	this.isOpen = false;
+	this.isFlag = false;
 }

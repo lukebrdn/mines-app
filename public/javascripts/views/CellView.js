@@ -1,7 +1,6 @@
 function CellView (options) {
 	this.$el = this.buildElement();
 	this.model = options.model;
-
 	this.listen();
 }
 
@@ -24,21 +23,32 @@ CellView.prototype.listen = function () {
 	// handles clicking on a cell
 	this.$el.addEventListener('click', this.onClick.bind(this));
 
-	
-
-
 	events.on('mine:placed', function (cellWithMinePlaced) {
 
-		if (this.isNeighbor(cellWithMinePlaced)) {
-			this.model.minesNearby += 1;
+		// is notifying cell within 1 on the x axis
+		if (cellWithMinePlaced.model.x <= this.model.x + 1 && cellWithMinePlaced.model.x >= this.model.x - 1) {
+			
+			// is notifying cell within 1 on the y axis
+			if (cellWithMinePlaced.model.y <= this.model.y + 1 && cellWithMinePlaced.model.y >= this.model.y - 1) {
+				this.model.minesNearby += 1;
+			}
 		}
+
 
 	}.bind(this));
 
 	events.on('no:threat', function (cellWithNoThreat) {
 
-		if (this.isNeighbor(cellWithNoThreat)) {
-			this.openCell();
+		// is notifying cell within 1 on the x axis
+		if (cellWithNoThreat.model.x <= this.model.x + 1 && cellWithNoThreat.model.x >= this.model.x - 1) {
+			
+			// is notifying cell within 1 on the y axis
+			if (cellWithNoThreat.model.y <= this.model.y + 1 && cellWithNoThreat.model.y >= this.model.y - 1) {
+				
+				this.openCell();
+			
+			}
+		
 		}
 
 	}.bind(this));
@@ -49,24 +59,35 @@ CellView.prototype.onClick = function () {
 	// notify game cell is clicked
 	events.trigger('cell:click', this.model);
 
-	// open cell if not opened
+	// open cell
 	this.openCell();
 
 };
 
 CellView.prototype.openCell = function () {
 	if (this.model.isOpen) return;
+	if (this.model.isFlag && !controls.isFlagMode()) return;
 
-	if (this.model.isMine) {
+	if (controls.isFlagMode()) {
+		this.model.isFlag = !this.model.isFlag;
+		if (this.model.isFlag) {
+			this.$el.classList.add('flag');	
+		} else {
+			this.$el.classList.remove('flag');	
+		}
+		
+	} else if (this.model.isMine) {
 
 		// notify game mine was clicked
 		events.trigger('mine:click');
+		console.log("YOU LOSE!!! ");
+		console.log(this);
 
 		// style mine
 		this.$el.classList.add('mine');
 
 	} else {
-		
+
 		// update cell state
 		this.model.isOpen = true;
 
@@ -89,10 +110,16 @@ CellView.prototype.openCell = function () {
 };
 
 CellView.prototype.isNeighbor = function (notifyingCell) {
-		// is cell in question + or - 1 x from this cell
-		if (notifyingCell.model.x === this.model.x + 1 || notifyingCell.model.x === this.model.x - 1) {
-			if (notifyingCell.model.y === this.model.y + 1 || notifyingCell.model.y === this.model.y - 1) {
-				return true;
+		// is notifying cell within 1 on the x axis
+		if (notifyingCell.model.x <= this.model.x + 1 && notifyingCell.model.x >= this.model.x - 1) {
+			
+			// is notifying cell within 1 on the y axis
+			if (notifyingCell.model.y <= this.model.y + 1 && notifyingCell.model.y >= this.model.y - 1) {
+				
+				// is notifying cell not this cell, then it is a neighbor
+				if (!(notifyingCell.model.y === this.model.y && notifyingCell.model.y === this.model.y)) {
+					return true;	
+				}
 			}
 		}
 		return false;
