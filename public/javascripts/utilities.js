@@ -1,6 +1,6 @@
 function setClickListener(el, fn, context) {
 	if (fn) {
-		el.onclick = fn.bind(context);	
+		el.onclick = fn.bind(context);
 	}
 }
 
@@ -14,4 +14,8 @@ function getRandomIntInclusive(min, max) {
 
 function isEmpty(obj) {
 	return Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
+function getSize(obj) {
+    return Object.keys(obj).length;
 }

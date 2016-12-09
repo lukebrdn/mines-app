@@ -1,10 +1,11 @@
 function ControlsController () {
 	this.setDefaults();
-	this.listen();	
+	this.listen();
 }
 
 ControlsController.prototype.setDefaults = function () {
 	this.mode = 'default';
+	this.toggleKeys = [91, 18];
 };
 
 ControlsController.prototype.isFlagMode = function () {
@@ -14,21 +15,20 @@ ControlsController.prototype.isFlagMode = function () {
 ControlsController.prototype.listen = function () {
 
 	var modeButtons = document.getElementsByClassName('js-mode-button');
-	
+
 	for (var i = 0; i < modeButtons.length; i++) {
 		setClickListener(modeButtons[i], this.setMode, this);
-	}	
+	}
 
 	document.onkeydown = function (e) {
-	
-		if (e.keyCode === 91) {
+		if (this.toggleKeys.includes(e.keyCode)) {
 			this.set('mode', 'flag');
 			this.toggleModeUI();
 		}
 	}.bind(this);
 
 	document.onkeyup = function (e) {
-		if (e.keyCode === 91) {
+		if (this.toggleKeys.includes(e.keyCode)) {
 			this.set('mode', 'default');
 			this.toggleModeUI();
 		}
@@ -58,7 +58,7 @@ ControlsController.prototype.toggleModeUI = function () {
 	var buttons = document.getElementsByClassName('js-mode-button');
 
 	document.getElementsByClassName('selected')[0].classList.remove('selected');
-	
+
 	for (var i = 0; i < buttons.length; i++) {
 		if (buttons[i].getAttribute('data-mode') === mode) {
 			buttons[i].classList.add('selected');

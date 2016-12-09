@@ -22,25 +22,41 @@ GameController.prototype.start = function () {
 	// append grid to anchor element
 	gridContainer.appendChild(this.grid.$el);
 
+	// create user if one doesn't exist
+	this.user = this.user || new User();
+
 	// set defaults
 	this.setDefaults();
 
 	// set listeners
 	this.listen();
 
-	// create user if one doesn't exist
-	this.user = this.user || new User();
 
 	this.showStats();
 
 };
 
+GameController.prototype.setMineCount = function() {
+	// determines mines by Grid size level, streak
+	// Level of difficulty
+	var level = this.user.get("level");
+	var streak =  this.user.get("streak");
+	var streakAdj = .5 - (streak * .1);
+	var grid = this.grid.model;
+	var tiles = grid.height * grid.width;
+	var maxMines = tiles * .60;
+	var mines = Math.round(maxMines * (level * streakAdj), 1);
+	console.log(mines);
+	this.mines = mines;
+};
+
 GameController.prototype.setDefaults = function () {
+	// Add Level Complexity
+	this.setMineCount();
 
 	// set defaults
 	this.isFirstClick = true;
 	this.cellsOpen = 0;
-	this.mines = 20;
 };
 
 GameController.prototype.listen = function () {
@@ -60,7 +76,7 @@ GameController.prototype.onCellClick = function (clickedCell) {
 		// set mines, except on the clicked cell
 		var minesController = new MinesController();
 		minesController.setMines(this.mines, this.grid, clickedCell);
-		
+
 		this.isFirstClick = false;
 	}
 
@@ -81,11 +97,12 @@ GameController.prototype.onMineClick = function () {
 
 GameController.prototype.handleLose = function () {
 	this.user.set('streak', 0);
+	this.user.decrement('level', 1, 1);
 	this.announceLose();
 };
 
 GameController.prototype.handleWin = function () {
-	this.user.increment('streak', 1);
+	this.user.incrementProps(['streak', 'level'], 1);
 	this.announceWin();
 };
 

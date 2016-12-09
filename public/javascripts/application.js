@@ -4,6 +4,7 @@ var storage;
 var fail;
 var uid;
 try {
+    console.log("Entered")
 	uid = new Date;
 	(storage = window.localStorage).setItem(uid, uid);
 	fail = storage.getItem(uid) != uid;

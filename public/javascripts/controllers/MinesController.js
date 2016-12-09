@@ -1,7 +1,9 @@
 function MinesController () {}
 
 MinesController.prototype.setMines = function (numberOfMines, grid, clickedCell) {
+	console.log(numberOfMines);
 		var mines = new MinesModel(numberOfMines);
+		console.log(mines);
 		var unplacedMines = mines.total;
 		var cells = grid.model.cells;
 		var cell;
@@ -18,11 +20,11 @@ MinesController.prototype.setMines = function (numberOfMines, grid, clickedCell)
 							if (getRandomIntInclusive(0, 20) > 18) {
 								cell.model.isMine = true;
 								events.trigger('mine:placed', cell);
-								unplacedMines--;		
-							}					
-						}	
+								unplacedMines--;
+							}
+						}
 					}
-					
+
 				}
 			}
 		}
