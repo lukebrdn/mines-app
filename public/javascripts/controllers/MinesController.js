@@ -1,31 +1,61 @@
 function MinesController () {}
 
-MinesController.prototype.setMines = function (numberOfMines, grid, clickedCell) {
-	console.log(numberOfMines);
-		var mines = new MinesModel(numberOfMines);
-		console.log(mines);
-		var unplacedMines = mines.total;
-		var cells = grid.model.cells;
-		var cell;
+// Think it may make more sense to have all code affecting mines
+// open and numbers in the same spot
+MinesController.prototype.getFieldCounts = function(stats, grid) {
+	// determines mines by Grid size level, streak
+	// Level of difficulty
+	var tiles = grid.model.height * grid.model.width;
+	var maxMines = tiles * .60;
+	var streakAdj = .6;
+	if (stats.streak <= 6) {
+		streakAdj = .6 - (stats.streak * .1);
+	}
+	var mines = Math.round(maxMines * (stats.level * streakAdj), 1);
+	var rTiles = tiles - mines;
+	var open = Math.round(rTiles * .5, 1) - stats.level - stats.streak;
+	// console.log("Need ", out)
+	return {'mines': mines, 'open': open};
+};
 
-		while (unplacedMines > 0) {
+MinesController.prototype.buildSafeZone = function(stats, field, clickedCell) {
+	var coords = {x: clickedCell.x, y: clickedCell.y}
+	var maxZoneSize = field.open
+	// TODO add better tuning to below
+	var zoneSize = 7;
+	if (stats.level > 4) zoneSize = 8 - Math.round(stats.level/2, 1);
 
-			for (var i = 0; i < cells.length; i++) {
-				cell = cells[i];
+	var zone = getAdjacentCoords(clickedCell, 7).slice(0, zoneSize);
 
-				if (unplacedMines) {
-					if (!cell.model.isMine) {
-						if (!(clickedCell.x === cell.model.x && clickedCell.y === cell.model.y)) {
+	return zone
+};
 
-							if (getRandomIntInclusive(0, 20) > 18) {
-								cell.model.isMine = true;
-								events.trigger('mine:placed', cell);
-								unplacedMines--;
-							}
+MinesController.prototype.setMines = function (stats, grid, clickedCell) {
+	var theField = this.getFieldCounts(stats, grid);
+	console.log("Generating Mine Field: ", theField);
+	var safeZone = this.buildSafeZone(stats, theField, clickedCell);
+	var mines = new MinesModel(theField.mines);
+	var unplacedMines = mines.total;
+	var cells = grid.model.cells;
+	var cell;
+
+	while (unplacedMines > 0) {
+		for (var i = 0; i < cells.length; i++) {
+			cell = cells[i];
+
+			if (unplacedMines) {
+				if (!cell.model.isMine) {
+					if (!(clickedCell.x === cell.model.x && clickedCell.y === cell.model.y)) {
+
+						if (getRandomIntInclusive(0, 20) > 18) {
+							cell.model.isMine = true;
+							events.trigger('mine:placed', cell);
+							unplacedMines--;
 						}
 					}
-
 				}
+
 			}
 		}
+	}
 }

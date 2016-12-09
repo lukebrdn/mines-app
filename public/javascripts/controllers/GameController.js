@@ -24,6 +24,8 @@ GameController.prototype.start = function () {
 
 	// create user if one doesn't exist
 	this.user = this.user || new User();
+	this.user.increment('rounds', 1);
+	console.log(this.user)
 
 	// set defaults
 	this.setDefaults();
@@ -33,7 +35,11 @@ GameController.prototype.start = function () {
 
 
 	this.showStats();
+};
 
+// Testing purposes delete
+GameController.prototype.get = function(property) {
+	return this[property];
 };
 
 GameController.prototype.setMineCount = function() {
@@ -45,14 +51,13 @@ GameController.prototype.setMineCount = function() {
 	var grid = this.grid.model;
 	var tiles = grid.height * grid.width;
 	var maxMines = tiles * .60;
-	var mines = Math.round(maxMines * (level * streakAdj), 1);
-	console.log(mines);
-	this.mines = mines;
+	this.mines = Math.round(maxMines * (level * streakAdj), 1);
 };
 
 GameController.prototype.setDefaults = function () {
+
 	// Add Level Complexity
-	this.setMineCount();
+	// this.setMineCount();
 
 	// set defaults
 	this.isFirstClick = true;
@@ -75,7 +80,12 @@ GameController.prototype.onCellClick = function (clickedCell) {
 
 		// set mines, except on the clicked cell
 		var minesController = new MinesController();
-		minesController.setMines(this.mines, this.grid, clickedCell);
+		minesController.setMines(
+			this.user.getUsersStats(),
+			this.grid,
+			clickedCell
+			);
+		// minesController.setMines(this.mines, this.grid, clickedCell);
 
 		this.isFirstClick = false;
 	}
@@ -97,12 +107,13 @@ GameController.prototype.onMineClick = function () {
 
 GameController.prototype.handleLose = function () {
 	this.user.set('streak', 0);
+	this.user.increment('lossStreak', 1);
 	this.user.decrement('level', 1, 1);
 	this.announceLose();
 };
 
 GameController.prototype.handleWin = function () {
-	this.user.incrementProps(['streak', 'level'], 1);
+	this.user.winning();
 	this.announceWin();
 };
 
