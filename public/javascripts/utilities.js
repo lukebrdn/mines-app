@@ -4,57 +4,31 @@ function setClickListener(el, fn, context) {
 	}
 }
 
-function getAdjacentCoords(centroid, max) {
-    var offset = 0;
-    var maxZone = 12;
-    var area = [{'x': centroid.x, 'y': centroid.y}];
-
-    while (area.length < maxZone) {
-        area.concat(getMyNeighbors(centroid, offset, max));
-    }
-
-    return area;
+function getCellIndex(cell, height, width) {
+    return cell.x + ((height - cell.y - 1) * width);
 }
 
-// TODO this solution is bulky... need to figure a js way to approach
-function getMyNeighbors(me, delta, max) {
-    var zone = []
-    var separation = 1 + delta;
-    var cardinalSafe = {
-        'north': me.y !== max && me.y + separation < max,
-        'south': me.y !== 0 && me.y - separation >= 0,
-        'east': me.x !== max && me.x + separation < max,
-        'west': me.x !== 0 && me.x - separation >= 0
-    }
+function getAreaIndexes(centerIndex, width, height) {
+    var indexes = [centerIndex]
+    var offCenter = centerIndex % width
 
-    if (cardinalSafe.west) {
-        zone.push(getCoordObj(me.x-separation, me.y))
-    }
-    if (cardinalSafe.west && cardinalSafe.south) {
-        zone.push(getCoordObj(me.x-separation, me.y-separation));
-    }
-    if (cardinalSafe.south) {
-        zone.push(getCoordObj(me.x, me.y-separation));
-    }
-    if (cardinalSafe.south && cardinalSafe.east) {
-        zone.push(getCoordObj(me.x+separation, me.y-separation));
-    }
-    if (cardinalSafe.east) {
-        zone.push(getCoordObj(me.x+separation, me.y));
-    }
-    if (cardinalSafe.east && cardinalSafe.north) {
-        zone.push(getCoordObj(me.x-separation, me.y+separation));
-    }
-    if (cardinalSafe.north) {
-        zone.push(getCoordObj(me.x-separation, me.y+separation));
-    }
-    return zone
+    var side = [-1, 1]
+    if (offCenter === 0) { side = [1,2]; }
+    if (offCenter === (width - 1)) { side = [-1,-2]; }
+    var vert = [-width, width]
+    if (centerIndex < width) { vert = [width, width*2]; }
+    if (((width * height) - offCenter) < width) { vert = [-width,-width*2]; }
+
+    for (var i = 0; i < side.length; i++) {
+       indexes.push(centerIndex + side[i]);
+       indexes.push(centerIndex + side[i] + vert[i]);
+       indexes.push(centerIndex + vert[i]);
+       indexes.push(centerIndex + side[i] + vert[i+1]);
+       indexes.push(centerIndex + vert[i+1]);
+    };
+
+    return indexes
 }
-
-function getCoordObj(x, y) {
-    return {'x': x, 'y': y}
-}
-
 // function boundryTester(loc, )
 
 // Returns a random integer between min (included) and max (included)
