@@ -1,4 +1,3 @@
-
 body {
 	font-family: Helvetica, sans-serif;
 }
@@ -155,15 +154,16 @@ body {
 	text-align: right;
 }
 .mode-button {
-	border: 1px solid #d1c1e0;
-	background-color: #eee;
 	box-shadow: none;
-	color: #a384c1;
-	height: 30px;
-    width: 40px;
+	height: 45px;
+    width: 45px;
 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
 	background-position: center;
     background-repeat: no-repeat;
+    border: none;
     text-indent: -100;
     overflow: hidden;
 }
@@ -171,25 +171,21 @@ body {
 	outline: 0;
 }
 
-.mode-button.selected {
-	box-shadow: inset 1px 1px 13px -4px #000
+.mode-button:first-child {
+	background-image: url('../images/target.svg');
 }
 
-.mode-button:first-child {
-	border-top-left-radius: 6px; 
-	border-bottom-left-radius: 6px;
-	background-image: url('../images/target.svg');
-    background-size: 58%;
-
+.mode-button.selected:first-child {
+	background-image: url('../images/target-chosen.svg');	
 }
 
 .mode-button:last-child {
 	margin-left: -5px;
-	border-top-right-radius: 6px; 
-	border-bottom-right-radius: 6px;
 	background-image: url('../images/flag.svg');
-    background-size: 33%;
-    background-position-x: 11px;
+}
+
+.mode-button.selected:last-child {
+	background-image: url('../images/flag-chosen.svg');
 }
 
 .command-key-symbol {
@@ -206,7 +202,6 @@ body {
 .flag {
 	background-image: url('../images/flag.svg');
 	background-repeat: no-repeat;
-    background-size: 45%;
     background-position: center;
 }
 
