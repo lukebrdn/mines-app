@@ -5,6 +5,16 @@ body {
 * {
 	box-sizing: border-box;
 }
+
+button {
+	/* button system style resets */
+    background: none;
+	border: none;
+	box-shadow: none;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
 	
 .game-container {
 	margin: 0 auto;
@@ -149,21 +159,51 @@ body {
 	/*background-color: green;	*/
 }
 
+.controls {
+	position: relative;
+	height: 75px;
+}
+
+.level-meter {
+	display: inline-block;
+	color: #663399;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.level-meter.best {
+	opacity: .4;
+	display: none;
+	margin-left: 10px;
+}
+
+.level-meter .heading {
+	text-transform: uppercase;
+	font-size: 9px;
+	text-align: left;
+	display: block;
+}
+
+.level-meter .level {
+	text-align: left;
+	font-size: 25px;
+	margin-left: 2px;
+}
+
 .mode-buttons {
-	margin: 20px 0;
 	text-align: right;
+	display: inline-block;
+	position: absolute;
+	top: 15px;
+	right: 5px;
 }
 .mode-button {
-	box-shadow: none;
-	height: 45px;
-    width: 45px;
+	height: 35px;
+    width: 35px;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: none;
-	background-position: center;
+    background-position: center;
     background-repeat: no-repeat;
-    border: none;
     text-indent: -100;
     overflow: hidden;
 }
@@ -190,13 +230,12 @@ body {
 
 .command-key-symbol {
 	color: #a384c1;
-    position: relative;
+    position: absolute;
     right: 0;
-    top: -19px;
+    bottom: 20px;
     display: none;
-    text-align: right;
-    float: right;
     font-size: 12px;
+    opacity: .7;
 }
 
 .flag {
