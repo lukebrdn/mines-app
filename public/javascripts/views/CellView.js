@@ -80,8 +80,6 @@ CellView.prototype.openCell = function () {
 
 		// notify game mine was clicked
 		events.trigger('mine:click');
-		console.log("YOU LOSE!!! ");
-		console.log(this);
 
 		// style mine
 		this.$el.classList.add('mine');
