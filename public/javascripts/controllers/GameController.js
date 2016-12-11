@@ -30,6 +30,7 @@ GameController.prototype.start = function () {
 
 	// create user if one doesn't exist
 	this.user = this.user || new User();
+	this.mines = this.user.level;
 
 	this.showStats();
 
@@ -40,7 +41,6 @@ GameController.prototype.setDefaults = function () {
 	// set defaults
 	this.isFirstClick = true;
 	this.cellsOpen = 0;
-	this.mines = 20;
 };
 
 GameController.prototype.listen = function () {
@@ -81,11 +81,13 @@ GameController.prototype.onMineClick = function () {
 
 GameController.prototype.handleLose = function () {
 	this.user.set('streak', 0);
+	this.user.set('level', 5);
 	this.announceLose();
 };
 
 GameController.prototype.handleWin = function () {
 	this.user.increment('streak', 1);
+	this.user.increment('level', 1);
 	this.announceWin();
 };
 
@@ -108,16 +110,25 @@ GameController.prototype.announceLose = function () {
 };
 
 GameController.prototype.showStats = function () {
-	this.showStreak();
-	this.showBest();
+	if (this.user.get('best') > 5) {
+		this.showBest();
+	}
+	
+	this.showLevel();
 };
 
-GameController.prototype.showStreak = function () {
-	var stat = document.getElementsByClassName('js-streak')[0];
-	stat.innerHTML = this.user.get('streak');
-};
 
 GameController.prototype.showBest = function () {
-	var stat = document.getElementsByClassName('js-best')[0];
+	var best = document.getElementsByClassName('js-level-best-container')[0];
+	var stat = document.getElementsByClassName('js-level-best')[0];
+	
+	best.style.display = 'inline-block';
 	stat.innerHTML = this.user.get('best');
+
+};
+
+GameController.prototype.showLevel = function () {
+	var level = document.getElementsByClassName('js-level')[0];
+	level.innerHTML = this.user.get('level');
+
 };

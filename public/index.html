@@ -24,7 +24,7 @@
 		<main class="game-container">
 			<header class="game-header">
 				<h1>too many mines</h1>
-				<div class="stats-container js-stats">
+<!-- 				<div class="stats-container js-stats">
 					<div class="stat-box">
 						<span class="stat-heading">Streak</span>
 						<span class="stat-score js-streak"></span>
@@ -33,17 +33,28 @@
 						<span class="stat-heading">Best</span>
 						<span class="stat-score js-best"></span>
 					</div>
-				</div>
+				</div> -->
 				<p>a minesweeping game</p>
 			</header>
 			
 			<div class="minefield js-grid-container"></div>
-			<div class="mode-buttons">
-				<button class="mode-button target selected js-mode-button" data-mode="default">target</button>
-				<button class="mode-button flag js-mode-button" data-mode="flag">flag</button>
-			</div>
-			<span class="command-key-symbol">&#8984;</span>
 
+			<div class="controls cf">
+				<div class="level-meter current">
+					<span class="heading">Current</span>
+					<span class="level js-level"></span><span>mines</span>
+				</div>
+				<div class="level-meter best js-level-best-container">
+					<span class="heading">Best</span>
+					<span class="level js-level-best"></span>
+				</div>
+				<div class="mode-buttons cf">
+					<button class="mode-button target selected js-mode-button" data-mode="default">target</button>
+					<button class="mode-button flag js-mode-button" data-mode="flag">flag</button>
+				</div>
+				<span class="command-key-symbol">&#8984;</span>
+			</div>
+			
 			<div class="game-instruction">
 				<h2>Goal</h2>
 				<p>Find all the mines without clicking on one.</p>

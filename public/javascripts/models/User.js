@@ -1,6 +1,6 @@
 function User () {
-	this.streak = 0;
 	this.best = 0;
+	this.level = 5;
 
 	this.getStoredStats();
 }
@@ -24,11 +24,11 @@ User.prototype.increment = function (property, incrementAmout) {
 };
 
 User.prototype.updateBest = function () {
-	var streak = this.get('streak');
+	var level = this.get('level');
 	var best = this.get('best');
 
-	if (streak > best && storage) {
-		best = this.set('best', streak);
+	if (level > best && storage) {
+		best = this.set('best', level);
 		storage.setItem('stats', JSON.stringify({best: best}));	
 	}
 
