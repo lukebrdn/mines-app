@@ -7,7 +7,7 @@ function CellView (options) {
 CellView.prototype.buildElement = function () {
 	var $el = document.createElement('div');
 	var $content = document.createElement('span');
- 	
+
  	$el.classList.add('cell');
 
  	$content.classList.add('cell-content', 'js-cell-content');
@@ -19,7 +19,7 @@ CellView.prototype.buildElement = function () {
  };
 
 CellView.prototype.listen = function () {
-	
+
 	// handles clicking on a cell
 	this.$el.addEventListener('click', this.onClick.bind(this));
 
@@ -27,7 +27,7 @@ CellView.prototype.listen = function () {
 
 		// is notifying cell within 1 on the x axis
 		if (cellWithMinePlaced.model.x <= this.model.x + 1 && cellWithMinePlaced.model.x >= this.model.x - 1) {
-			
+
 			// is notifying cell within 1 on the y axis
 			if (cellWithMinePlaced.model.y <= this.model.y + 1 && cellWithMinePlaced.model.y >= this.model.y - 1) {
 				this.model.minesNearby += 1;
@@ -41,21 +41,21 @@ CellView.prototype.listen = function () {
 
 		// is notifying cell within 1 on the x axis
 		if (cellWithNoThreat.model.x <= this.model.x + 1 && cellWithNoThreat.model.x >= this.model.x - 1) {
-			
+
 			// is notifying cell within 1 on the y axis
 			if (cellWithNoThreat.model.y <= this.model.y + 1 && cellWithNoThreat.model.y >= this.model.y - 1) {
-				
+
 				this.openCell();
-			
+
 			}
-		
+
 		}
 
 	}.bind(this));
 };
 
 CellView.prototype.onClick = function () {
-	
+
 	// notify game cell is clicked
 	events.trigger('cell:click', this.model);
 
@@ -71,11 +71,11 @@ CellView.prototype.openCell = function () {
 	if (controls.isFlagMode()) {
 		this.model.isFlag = !this.model.isFlag;
 		if (this.model.isFlag) {
-			this.$el.classList.add('flag');	
+			this.$el.classList.add('flag');
 		} else {
-			this.$el.classList.remove('flag');	
+			this.$el.classList.remove('flag');
 		}
-		
+
 	} else if (this.model.isMine) {
 
 		// notify game mine was clicked
@@ -96,29 +96,30 @@ CellView.prototype.openCell = function () {
 
 		// add threat level
 		this.$el.content.innerHTML = this.model.minesNearby || '';
-		
+
 		// notify game cell has been opened
 		events.trigger('cell:open', this.model);
 
 		// notify game if cell has zero mines nearby
+		// TODO examine this for revealing the squares
 		if (!this.model.minesNearby) {
 			events.trigger('no:threat', this);
 		}
 
 	}
-		
+
 };
 
 CellView.prototype.isNeighbor = function (notifyingCell) {
 		// is notifying cell within 1 on the x axis
 		if (notifyingCell.model.x <= this.model.x + 1 && notifyingCell.model.x >= this.model.x - 1) {
-			
+
 			// is notifying cell within 1 on the y axis
 			if (notifyingCell.model.y <= this.model.y + 1 && notifyingCell.model.y >= this.model.y - 1) {
-				
+
 				// is notifying cell not this cell, then it is a neighbor
 				if (!(notifyingCell.model.y === this.model.y && notifyingCell.model.y === this.model.y)) {
-					return true;	
+					return true;
 				}
 			}
 		}

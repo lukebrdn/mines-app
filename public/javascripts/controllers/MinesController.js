@@ -45,10 +45,13 @@ MinesController.prototype.setMines = function (stats, grid, clickedCell) {
 		for (var i = 0; i < cells.length; i++) {
 			cell = cells[i];
 
-			// if (safeZone.includes(i)) {
-			// 	cell.model.isOpen = true;
-			// }
-			// else
+			if (safeZone.includes(i)) {
+				console.log(i)
+				continue;
+				// cell.model.isOpen = true;
+				// events.trigger('mine:placed', cell);
+			}
+			else
 				if (unplacedMines) {
 				if (!cell.model.isMine) {
 					if (!(clickedCell.x === cell.model.x && clickedCell.y === cell.model.y)) {
