@@ -1,3 +1,7 @@
+/*
+	font-size in rem. 1rem = 16px.
+*/
+
 body {
 	font-family: Helvetica, sans-serif;
 }
@@ -15,33 +19,36 @@ button {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-	
-.game-container {
+
+.contain {
 	margin: 0 auto;
-	padding: 0 20px 50px;
 	max-width: 400px;
 	min-width: 300px;
 }
+	
+.game-container {
+	padding: 20px;
+	min-height: 90vh;
+}
 
 .game-header {
-	margin: 15px 0 25px;
     display: block;
 }
 
 .game-header h1 {
 	display: inline-block;
-    margin: 5px 0 0 0;
-    width: 75px;
-    font-size: 18px;
+    margin: 0;
+    font-size: .75rem;
     line-height: 0.9;
     text-transform: uppercase;
     font-weight: 300;
 }
 
 .game-header p {
-	color: #d1c1e0;
-    font-size: 12px;
-    margin-top: 3px;
+	color: #c1add6;
+    font-size: .625rem;
+    margin: 3px 0 0;
+    font-weight: 300;
 }
 
 .stats-container {
@@ -74,7 +81,7 @@ button {
 }
 
 .minefield {
-	/*margin-bottom: 50px;*/
+	margin: 20px 0;
 }
 
 .row {
@@ -161,47 +168,45 @@ button {
 
 .controls {
 	position: relative;
-	height: 75px;
 }
 
 .level-meter {
 	display: inline-block;
 	color: #663399;
-    font-size: 14px;
-    margin-top: 15px;
-    margin-left: 5px;
+    font-size: .875rem;
 }
 
 .level-meter.best {
 	opacity: .4;
 	display: none;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 .level-meter .heading {
+	margin-bottom: 4px;
 	text-transform: uppercase;
-	font-size: 9px;
+	font-size: .625rem;
 	text-align: left;
 	display: block;
 }
 
 .level-meter .level {
 	text-align: left;
-	font-size: 25px;
-	margin-left: 2px;
+	font-size: 1rem;
+	margin-right: 2px;
 }
 
 .mode-buttons {
 	text-align: right;
 	display: inline-block;
 	position: absolute;
-	top: 15px;
-	right: 5px;
+	right: 0;
 }
 .mode-button {
-	height: 35px;
-    width: 35px;
+	height: 33px;
+    width: 33px;
 
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     text-indent: -100;
@@ -220,7 +225,6 @@ button {
 }
 
 .mode-button:last-child {
-	margin-left: -5px;
 	background-image: url('../images/flag.svg');
 }
 
@@ -231,6 +235,7 @@ button {
 .command-key-symbol {
 	color: #a384c1;
     position: absolute;
+    top: 30px;
     right: 0;
     bottom: 20px;
     display: none;
@@ -245,22 +250,23 @@ button {
 }
 
 .game-instruction {
-    margin-bottom: 20px;
-    background-color: #e0d6ea;
-    padding: 1px 20px 1px;
-    line-height: 2;
+    padding: 20px;
+    color: #663399;
+    min-height: 300px;
 }
 
 .game-instruction h2 {
+	text-align: center;
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: .825rem;
+    margin: 0 0 5vh 0;
 }
 .game-instruction p {
 	font-weight: 300;
 	font-size: 14px;
-	margin-top: 5px;
+	line-height: 1.5;
+	text-align: center;
 }
 
 .overlay {
@@ -325,11 +331,25 @@ button {
     display: block;
 }
 
+.footer {
+	padding: 20px;
+	background-color: #ddd;
+	text-align: center;
+}
+
 
 .email-us-link {
-	display: block;
-	text-align: center;
-	color: #663399;
+	color: #333;
+	font-weight: 300;
+	font-size: .75rem;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.email-us-link:hover {
+	background-color: #eee;
 }
 
 
@@ -348,4 +368,10 @@ button {
 		display: inline-block;
 	}
 	
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+	.game-container {
+		height: auto;
+	}
 }
