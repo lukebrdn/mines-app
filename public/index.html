@@ -21,19 +21,9 @@
 	</head>
 	<body>
 
-		<main class="game-container">
+		<main class="game-container contain">
 			<header class="game-header">
-				<h1>too many mines</h1>
-<!-- 				<div class="stats-container js-stats">
-					<div class="stat-box">
-						<span class="stat-heading">Streak</span>
-						<span class="stat-score js-streak"></span>
-					</div>
-					<div class="stat-box">
-						<span class="stat-heading">Best</span>
-						<span class="stat-score js-best"></span>
-					</div>
-				</div> -->
+				<h1>too<br>many<br>mines</h1>
 				<p>a minesweeping game</p>
 			</header>
 			
@@ -54,22 +44,19 @@
 				</div>
 				<span class="command-key-symbol">&#8984;</span>
 			</div>
-			
-			<div class="game-instruction">
-				<h2>Goal</h2>
-				<p>Find all the mines without clicking on one.</p>
+		</main>	
+
+		<section class="game-instruction contain">
+			<h2>How to play</h2>
+			<p>Clicking the tiles above will reveal a number or a mine. The number represents the amount of mines nearby, i.e. touching that tile. To win, click all the tiles without choosing a mine.</p>
+		</section>
+		<footer class="footer">
+			<div class="contain">
+				<a href="mailto:toomanymines@gmail.com" class="email-us-link">Contact Us</a>
 			</div>
+		</footer>
 
-			<div class="game-instruction">
-				<h2>How to play</h2>
-				<p>Click tiles to open. If you click a mine, you lose. Numbers represent the amount of mines touching that tile.</p>
-			</div>
-
-			<a href="mailto:toomanymines@gmail.com" class="email-us-link">email me</a>
-
-			<div class="js-modal"></div>
-
-		</main>
+		<div class="js-modal"></div>
 
 		<!-- utilities -->
 		<script src="javascripts/utilities.js"></script>
