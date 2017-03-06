@@ -4,9 +4,14 @@ function ModalController () {};
 
 // show modal
 ModalController.prototype.show = function (data) {
-	var modal = document.getElementsByClassName('js-modal')[0];
+	var that = this;
+	var modal = document.getElementsByClassName('js-modal-container')[0];
 	modal.innerHTML = this.template(data);
 	this.listen();
+	setTimeout(function() {
+		that.animate();
+	}, 100);
+	
 };
 
 ModalController.prototype.listen = function () {
@@ -22,8 +27,15 @@ ModalController.prototype.onRestartClick = function () {
 
 // hide modal
 ModalController.prototype.hide = function (data) {
-	var modal = document.getElementsByClassName('js-modal')[0];
+	var modal = document.getElementsByClassName('js-modal-container')[0];
 	modal.innerHTML = '';
+};
+
+ModalController.prototype.animate = function () {
+	var overlay = document.getElementsByClassName('overlay')[0];
+	var modal = document.getElementsByClassName('js-modal')[0];
+	overlay.classList.add('animate');
+	modal.classList.add('animate');
 };
 
 // modal template
@@ -31,7 +43,7 @@ ModalController.prototype.hide = function (data) {
 ModalController.prototype.template = function (data) {
 
 	var html = '<div class="overlay"></div>' +
-				'<div class="modal">' +
+				'<div class="modal js-modal">' +
 					'<div class="message ' + data.state + '">' +
 						data.message +
 					'</div>' +

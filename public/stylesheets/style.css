@@ -278,9 +278,12 @@ button {
 	height: 100%;
 	width: 100%;
 	background-color: rgba(0,0,0,.4);
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
+	opacity: 0;
+	-webkit-transition: opacity .2s;
+    transition: opacity .2s;
 }
 
 
@@ -288,18 +291,26 @@ button {
 	height: 200px;
 	width: 200px;
 	background-color: white;
-	position: absolute;
+	position: fixed;
 	color: #333;
-	top: 0;
+	top: -900px;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	margin: auto;
 	border: 1px solid #b299cc;
+	border-radius: 10px;
+	opacity: 0;
+	-webkit-transition: opacity .5s, top .5s;
+    transition: opacity .5s, top .5s;
+}
+
+.modal.animate {
+	top: 0;
 }
 
 .modal .message {
-    height: 70%;
+    height: 71%;
     padding: 27px 20px;
 	text-align: center;
     font-size: 46px;
@@ -335,6 +346,7 @@ button {
 .modal .button {
 	border-top: 1px solid #b299cc;
     display: block;
+    border-radius: 0 0 10px 10px;
 }
 
 .footer {
@@ -357,6 +369,10 @@ button {
 .email-us-link:hover {
 	background-color: #e0d6ea;
 	color: #663399;
+}
+
+.animate {
+	opacity: 1;	
 }
 
 
