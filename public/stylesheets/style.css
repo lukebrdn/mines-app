@@ -311,7 +311,7 @@ button {
 
 .modal .message {
     height: 71%;
-    padding: 27px 20px;
+    padding: 20px;
 	text-align: center;
     font-size: 46px;
     font-weight: bolder;
@@ -321,8 +321,10 @@ button {
 
 .modal .message.lose {
 	background-image: url('../images/bomb.svg');
-	background-repeat: no-repeat;
-	background-position: 40px 32px;
+	background-repeat: repeat-x;
+    background-position: center;
+    background-size: 60%;
+    text-shadow: 0 0 20px white;
 }
 
 .modal .message.win {
