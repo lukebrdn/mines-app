@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="152px" height="148px" viewBox="0 0 152 148" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
-    <title>Polygon 1</title>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>star</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="Polygon-1" stroke="#D1C1E0" stroke-width="4" points="76 3 149.163603 57.5234867 121.217593 145.744341 30.7824066 145.744341 2.836397 57.5234867"></polygon>
-        <polygon id="Polygon-1" stroke="#D1C1E0" stroke-width="4" points="76.5295097 12 141.434318 60.3688104 116.642887 138.63119 36.4161323 138.63119 11.6247016 60.3688104"></polygon>
-        <polygon id="Star-1" fill="#D1C1E0" points="76.4059954 109.5 45.253377 125.877901 51.2029977 91.1889504 26 66.6220993 60.8296862 61.5610496 76.4059954 30 91.9823045 61.5610496 126.811991 66.6220993 101.608993 91.1889504 107.558614 125.877901"></polygon>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="star">
+            <polygon id="Polygon-1" stroke="#D1C1E0" stroke-width="0.56" points="10.5 0 20.7429044 7.63328814 16.8304631 19.9842078 4.16953692 19.9842078 0.25709558 7.63328814"></polygon>
+            <polygon id="Polygon-1" stroke="#D1C1E0" stroke-width="0.56" points="10.5741314 1.26 19.6608045 8.03163346 16.1900042 18.9883665 4.95825852 18.9883665 1.48745823 8.03163346"></polygon>
+            <polygon id="Star-1" fill="#D1C1E0" points="10.5568394 14.91 6.19547278 17.2029061 7.02841968 12.346453 3.5 8.9070939 8.37615606 8.19854695 10.5568394 3.78 12.7375226 8.19854695 17.6136787 8.9070939 14.085259 12.346453 14.9182059 17.2029061"></polygon>
+        </g>
     </g>
 </svg>

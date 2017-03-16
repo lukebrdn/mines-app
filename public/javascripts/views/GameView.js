@@ -1,3 +1,1 @@
-function GameView () {
-	
-}
+function GameView () {}
