@@ -106,6 +106,10 @@ button {
 	border-right: 1px solid #a384c1;
 	position: relative;
 	cursor: pointer;
+	background-size: 0%;
+	-webkit-transition: background-size .5s;
+    transition: background-size .5s;
+
 }
 
 .cell:last-child {
@@ -166,8 +170,12 @@ button {
 	color: #663399;
 }
 
-.m {
-	/*background-color: green;	*/
+.mine, .cell.mine:hover {
+    background-image: url(../images/bomb.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    background-color: white;
 }
 
 .controls {
@@ -282,7 +290,7 @@ button {
 	top: 0;
 	left: 0;
 	opacity: 0;
-	-webkit-transition: opacity .2s;
+	t
     transition: opacity .2s;
 }
 
@@ -303,6 +311,8 @@ button {
 	opacity: 0;
 	-webkit-transition: opacity .5s, top .5s;
     transition: opacity .5s, top .5s;
+    -webkit-transition-delay: .5s; /* Safari */
+    transition-delay: .5s;
 }
 
 .modal.animate {

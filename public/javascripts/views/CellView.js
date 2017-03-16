@@ -52,6 +52,12 @@ CellView.prototype.listen = function () {
 		}
 
 	}.bind(this));
+
+	events.on('gameover', function () {
+		if (this.model.isMine) {
+			this.showMine();
+		}		
+	}.bind(this));
 };
 
 CellView.prototype.onClick = function () {
@@ -62,6 +68,10 @@ CellView.prototype.onClick = function () {
 	// open cell
 	this.openCell();
 
+};
+
+CellView.prototype.showMine = function () {
+	this.$el.classList.add('mine');
 };
 
 CellView.prototype.openCell = function () {

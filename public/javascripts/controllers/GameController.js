@@ -82,6 +82,7 @@ GameController.prototype.onMineClick = function () {
 GameController.prototype.handleLose = function () {
 	this.user.set('streak', 0);
 	this.user.set('level', 5);
+	events.trigger('gameover');
 	this.announceLose();
 };
 
