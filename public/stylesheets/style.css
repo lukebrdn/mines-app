@@ -20,11 +20,20 @@ button {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+body:after {
+  content: url('../images/bomb.svg') url('../images/target.svg') url('../images/target-chosen.svg') url('../images/target-chosen.svg') url('../images/flag-chosen.svg') url('../images/flag.svg') url('../images/star.svg');
+  display: none;
+}
 
 .contain {
 	margin: 0 auto;
 	max-width: 420px;
 	min-width: 280px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	opacity: 0;
+	-webkit-transition: opacity .3s;
+    transition: opacity .3s;
 }
 	
 .game-container {
@@ -106,10 +115,6 @@ button {
 	border-right: 1px solid #a384c1;
 	position: relative;
 	cursor: pointer;
-	background-size: 0%;
-	-webkit-transition: background-size .5s;
-    transition: background-size .5s;
-
 }
 
 .cell:last-child {
@@ -170,12 +175,21 @@ button {
 	color: #663399;
 }
 
-.mine, .cell.mine:hover {
+.mine {
     background-image: url(../images/bomb.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80%;
-    background-color: white;
+    background-size: 0;
+    -webkit-transition: background-size .5s cubic-bezier(1,.45,.5,2);
+    transition: background-size .5s cubic-bezier(1,.45,.5,2);
+}
+
+.cell.mine:hover {
+	background-color: white;
+}
+
+.mine-animate {
+	background-size: 80%;
 }
 
 .controls {
@@ -261,6 +275,58 @@ button {
     background-position: center;
 }
 
+.flag-animate:before {
+	content: '';
+	height: 100%;
+	width: 100%;	
+	display: inline-block;
+	background-image: url('../images/flag.svg');
+	background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    -webkit-animation: fall-and-shake .3s 1;
+}
+
+@keyframes fall-and-shake {
+  0% {
+  	opacity: 0;
+    -webkit-transform: translateY(-25px) rotate(2deg);
+    transform: translateY(-25px) rotate(2deg);
+    transform-origin: 50% 100%;
+    background-color: transparent;
+ 
+  } 
+  40% {
+  	opacity: 1;
+    -webkit-transform: translateY(0) rotate(10deg);
+    transform: translateY(0) rotate(10deg);
+    transform-origin: 50% 100%;
+    background-color: transparent;
+  }
+  50% {
+    -webkit-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+    transform-origin: 50% 100%;
+    background-color: transparent;
+  }
+  75% {
+    -webkit-transform: rotate(8deg);
+    transform: rotate(8deg);
+    transform-origin: 50% 100%;
+    background-color: transparent;
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+    background-color: transparent;
+  }
+}
+
+.flag-animate:hover {
+	background-color: transparent !important;
+}
+
 .game-instruction {
     padding: 0 20px 50px;
     color: #663399;
@@ -290,7 +356,7 @@ button {
 	top: 0;
 	left: 0;
 	opacity: 0;
-	t
+	-webkit-transition: opacity .2s;
     transition: opacity .2s;
 }
 
@@ -367,7 +433,6 @@ button {
 	text-align: center;
 }
 
-
 .email-us-link {
 	color: white;
 	font-weight: 300;
@@ -387,6 +452,9 @@ button {
 	opacity: 1;	
 }
 
+.show {
+	opacity: 1;
+}
 
 @media (min-width: 400px) {
 

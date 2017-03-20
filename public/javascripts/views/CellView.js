@@ -58,6 +58,12 @@ CellView.prototype.listen = function () {
 			this.showMine();
 		}		
 	}.bind(this));
+	
+	events.on('win', function () {
+		if (this.model.isMine) {
+			this.animateFlag();
+		}		
+	}.bind(this));
 };
 
 CellView.prototype.onClick = function () {
@@ -72,6 +78,15 @@ CellView.prototype.onClick = function () {
 
 CellView.prototype.showMine = function () {
 	this.$el.classList.add('mine');
+	setTimeout(this.animateMine.bind(this), 20);
+};
+
+CellView.prototype.animateMine = function () {
+	this.$el.classList.add('mine-animate');
+};
+
+CellView.prototype.animateFlag = function () {
+	this.$el.classList.add('flag-animate');
 };
 
 CellView.prototype.openCell = function () {
@@ -81,9 +96,9 @@ CellView.prototype.openCell = function () {
 	if (controls.isFlagMode()) {
 		this.model.isFlag = !this.model.isFlag;
 		if (this.model.isFlag) {
-			this.$el.classList.add('flag');	
+			this.animateFlag();
 		} else {
-			this.$el.classList.remove('flag');	
+			this.$el.classList.remove('flag-animate');
 		}
 		
 	} else if (this.model.isMine) {
