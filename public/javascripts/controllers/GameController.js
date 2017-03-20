@@ -34,6 +34,16 @@ GameController.prototype.start = function () {
 
 	this.showStats();
 
+	this.showGame();
+
+};
+
+GameController.prototype.showGame = function () {
+	var els = document.getElementsByClassName('contain');
+
+	for (var i = 0; i < els.length; i++) {
+		els[i].classList.add('show');
+	}
 };
 
 GameController.prototype.setDefaults = function () {
@@ -89,6 +99,7 @@ GameController.prototype.handleLose = function () {
 GameController.prototype.handleWin = function () {
 	this.user.increment('streak', 1);
 	this.user.increment('level', 1);
+	events.trigger('win');
 	this.announceWin();
 };
 
